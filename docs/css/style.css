@@ -1,0 +1,743 @@
+/* =================================
+   2026 德國南部冬季旅遊網頁 - 主要樣式表
+   版本：1.0
+   參考：US_v1.md 設計規範
+   ================================= */
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --color-primary: #1E3A5F;     /* 主色調 - 深藍色 */
+  --color-accent: #FFD700;      /* 強調色 - 金黃色 */
+  --color-bg: #F5F5F5;          /* 背景色 - 淺灰色 */
+  --color-text: #333333;        /* 文字色 - 深灰色 */
+  --color-success: #28A745;     /* 成功色 - 綠色 */
+  --color-warning: #FFC107;     /* 警告色 - 橙黃色 */
+  --color-white: #FFFFFF;
+  --color-border: #E0E0E0;
+  
+  --font-heading: 'Noto Sans TC', 'Roboto', sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans TC', sans-serif;
+  
+  --max-width: 1200px;
+  --nav-height: 60px;
+  --transition: 0.3s ease;
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-primary);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+/* ---------- Container ---------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ---------- Navigation ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-primary);
+  color: var(--color-white);
+  height: var(--nav-height);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-white);
+}
+
+.navbar-brand:hover {
+  color: var(--color-accent);
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.navbar-menu a {
+  color: var(--color-white);
+  font-weight: 500;
+  padding: 0.5rem;
+}
+
+.navbar-menu a:hover,
+.navbar-menu a.active {
+  color: var(--color-accent);
+}
+
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.navbar-share {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity var(--transition);
+}
+
+.navbar-share:hover {
+  opacity: 0.9;
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #2C5282 100%);
+  color: var(--color-white);
+  text-align: center;
+  padding: 4rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,215,0,0.1)"/></svg>');
+  background-size: 30px 30px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  color: var(--color-white);
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.hero-dates {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* ---------- Timeline Section ---------- */
+.timeline {
+  padding: 3rem 1rem;
+  background: var(--color-white);
+}
+
+.timeline h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.timeline-card {
+  background: var(--color-white);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.timeline-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.timeline-card.special {
+  border-color: var(--color-warning);
+  background: linear-gradient(135deg, #FFFEF0 0%, #FFF8E1 100%);
+}
+
+.timeline-day {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-weight: 700;
+  background: var(--color-bg);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-date {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-city {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.timeline-theme {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.timeline-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  background: var(--color-warning);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+.timeline-badge.train {
+  background: #4A90D9;
+  color: #fff;
+}
+
+.timeline-badge.hotel {
+  background: #6B5B95;
+  color: #fff;
+}
+
+/* ---------- Day Switcher ---------- */
+.day-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--color-primary);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.day-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255,255,255,0.1);
+  color: var(--color-white);
+  border: 2px solid transparent;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.day-btn:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: var(--color-accent);
+}
+
+.day-btn.active {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* ---------- Daily Schedule ---------- */
+.daily-schedule {
+  padding: 2rem 1rem;
+}
+
+.schedule-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.schedule-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.schedule-meta {
+  color: #666;
+  font-size: 1rem;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.schedule-table th {
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.schedule-table tr:hover {
+  background: #f8f9fa;
+}
+
+.schedule-time {
+  font-weight: 600;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+/* ---------- Attraction Cards ---------- */
+.attractions {
+  padding: 2rem 0;
+}
+
+.attractions h2 {
+  margin-bottom: 1.5rem;
+}
+
+.attraction-card {
+  background: var(--color-white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-bottom: 1.5rem;
+  transition: box-shadow var(--transition);
+}
+
+.attraction-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+.attraction-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #ddd 0%, #eee 100%);
+}
+
+.attraction-body {
+  padding: 1.5rem;
+}
+
+.attraction-name {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.attraction-desc {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.attraction-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.attraction-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.attraction-info-item .icon {
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+.attraction-winter-note {
+  background: #FFF8E1;
+  border-left: 4px solid var(--color-warning);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  border-radius: 0 4px 4px 0;
+}
+
+.attraction-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Navigation Button ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background: #2C5282;
+  color: var(--color-white);
+}
+
+.btn-navigate {
+  background: #34A853;
+  color: var(--color-white);
+}
+
+.btn-navigate:hover {
+  background: #2E8B47;
+  color: var(--color-white);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ---------- Day Navigation ---------- */
+.day-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: var(--color-white);
+  border-radius: 8px;
+  margin-top: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.day-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-bg);
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+
+.day-nav a:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ---------- Collapsible ---------- */
+.collapsible {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: var(--color-white);
+  cursor: pointer;
+  user-select: none;
+}
+
+.collapsible-header:hover {
+  background: #f8f9fa;
+}
+
+.collapsible-title {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.collapsible-icon {
+  transition: transform var(--transition);
+}
+
+.collapsible.open .collapsible-icon {
+  transform: rotate(180deg);
+}
+
+.collapsible-body {
+  padding: 1.5rem;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  display: none;
+}
+
+.collapsible.open .collapsible-body {
+  display: block;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.footer a {
+  color: var(--color-accent);
+}
+
+/* ---------- Utility Classes ---------- */
+.text-center { text-align: center; }
+.text-warning { color: var(--color-warning); }
+.text-success { color: var(--color-success); }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: var(--color-primary);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0;
+  }
+
+  .navbar-menu.open {
+    display: flex;
+  }
+
+  .navbar-menu li {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .navbar-menu a {
+    display: block;
+    padding: 1rem;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-dates {
+    font-size: 1.2rem;
+  }
+
+  .timeline-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .day-switcher {
+    gap: 0.25rem;
+  }
+
+  .day-btn {
+    min-width: 42px;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .schedule-table {
+    font-size: 0.9rem;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding: 0.75rem;
+  }
+
+  .attraction-info {
+    grid-template-columns: 1fr;
+  }
+
+  .day-nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .day-nav a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 2.5rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .timeline-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .attraction-img {
+    height: 150px;
+  }
+
+  .attraction-body {
+    padding: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+/* ---------- Print Styles ---------- */
+@media print {
+  .navbar,
+  .day-switcher,
+  .day-nav,
+  .navbar-share,
+  .btn-navigate {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .hero {
+    background: none;
+    color: black;
+    padding: 1rem;
+  }
+
+  .hero h1 {
+    color: black;
+  }
+
+  .attraction-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+}
+
