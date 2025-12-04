@@ -529,6 +529,16 @@ h4 { font-size: 1.25rem; }
   color: var(--color-white);
 }
 
+.btn-more {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-more:hover {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
 .btn-outline {
   background: transparent;
   border: 2px solid var(--color-primary);
