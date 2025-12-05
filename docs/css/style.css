@@ -1096,3 +1096,557 @@ h4 { font-size: 1.25rem; }
   margin: 0;
 }
 
+/* ========== City Section Header with Detail Link ========== */
+
+.city-section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.city-section-header h2 {
+  margin-bottom: 0;
+}
+
+.detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.8rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 20px;
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.detail-link:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .city-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .detail-link {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+  }
+}
+
+/* ========== City Detail Page Styles ==========
+
+/* City Detail Header */
+.city-detail-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #2a4a6f 100%);
+  color: var(--color-white);
+  padding: 3rem 0 2rem;
+  margin-top: var(--nav-height);
+}
+
+.city-detail-header h1 {
+  color: var(--color-white);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.city-detail-header h1 a {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.city-detail-header h1 a:hover {
+  color: var(--color-accent);
+}
+
+.city-detail-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.city-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.city-detail-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* City Overview Section */
+.city-overview {
+  background: var(--color-white);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.city-overview p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+/* Attractions Research Table */
+.attractions-table-wrapper {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.attractions-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-white);
+  font-size: 0.9rem;
+}
+
+.attractions-table thead {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.attractions-table th {
+  padding: 1rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.attractions-table td {
+  padding: 1rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.attractions-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.attractions-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.attractions-table .attraction-name {
+  font-weight: 600;
+  color: var(--color-primary);
+  min-width: 140px;
+}
+
+.attractions-table .attraction-name.star::before {
+  content: '★ ';
+  color: var(--color-accent);
+}
+
+/* Desktop: Column-specific styles */
+/* Columns 4, 5 (優點、缺點) - no wrap */
+.attractions-table td:nth-child(4),
+.attractions-table td:nth-child(5) {
+  white-space: nowrap;
+}
+
+/* Column 6 (冬季特別考量) - 固定寬度並強制換行 */
+.attractions-table td:nth-child(6) {
+  white-space: normal;
+  min-width: 200px;
+  max-width: 250px;
+  word-wrap: break-word;
+}
+
+/* Mobile: Convert table to cards */
+@media (max-width: 992px) {
+  .attractions-table-wrapper {
+    overflow: visible;
+  }
+
+  .attractions-table,
+  .attractions-table thead,
+  .attractions-table tbody,
+  .attractions-table th,
+  .attractions-table td,
+  .attractions-table tr {
+    display: block;
+  }
+
+  .attractions-table thead {
+    display: none;
+  }
+
+  .attractions-table tbody tr {
+    background: var(--color-white);
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 1rem;
+  }
+
+  .attractions-table td {
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed var(--color-border);
+    white-space: normal; /* Override desktop nowrap for mobile */
+  }
+
+  .attractions-table td:nth-child(4),
+  .attractions-table td:nth-child(5),
+  .attractions-table td:nth-child(6) {
+    white-space: normal; /* Allow wrap on mobile */
+  }
+
+  .attractions-table td:last-child {
+    border-bottom: none;
+  }
+
+  .attractions-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Accommodation & Food Section */
+.detail-section {
+  background: var(--color-white);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.detail-section h2 {
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.detail-section h3 {
+  color: var(--color-primary);
+  margin: 1.5rem 0 1rem;
+}
+
+.detail-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.detail-section li {
+  position: relative;
+  padding: 1rem;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 3px solid var(--color-accent);
+  line-height: 1.7;
+}
+
+.detail-section li strong {
+  color: var(--color-primary);
+}
+
+/* Weather & Tips Grid */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.tip-card {
+  background: #f8f9fa;
+  padding: 1.25rem;
+  border-radius: 10px;
+  border-top: 3px solid var(--color-primary);
+}
+
+.tip-card h4 {
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.tip-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.tip-card li {
+  background: none;
+  padding: 0.3rem 0;
+  margin: 0;
+  border: none;
+}
+
+/* Photography Tips Section */
+.photo-section {
+  background: linear-gradient(135deg, #f0f4f8 0%, #e8eef5 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border-left: 4px solid #4A90D9;
+}
+
+.photo-section h2 {
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.photo-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-white);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.photo-table th,
+.photo-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.photo-table thead {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.photo-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.photo-tips-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.photo-tips-list li {
+  background: var(--color-white);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  border: none;
+  margin: 0;
+}
+
+/* Itinerary Timeline */
+.itinerary-section {
+  background: var(--color-white);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.itinerary-section h2 {
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.itinerary-section h3 {
+  color: var(--color-primary);
+  margin: 1.5rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.itinerary-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.itinerary-timeline li {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-left: none;
+  background: none;
+  margin: 0;
+}
+
+.itinerary-timeline .time {
+  flex-shrink: 0;
+  width: 60px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.itinerary-timeline .activity {
+  flex: 1;
+  color: var(--color-text);
+}
+
+/* Page Navigation Footer */
+.page-nav-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: var(--color-white);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.page-nav-footer .btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+.page-nav-footer .btn-back:hover {
+  background: #2a4a6f;
+  color: var(--color-white);
+}
+
+.related-days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.related-days span {
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.related-days a {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: #e8f4fd;
+  color: var(--color-primary);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.related-days a:hover {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* City Detail Link Button */
+.city-detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-left: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  background: rgba(255, 215, 0, 0.2);
+  color: var(--color-primary);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--transition);
+  vertical-align: middle;
+}
+
+.city-detail-link:hover {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* Shopping Tips Alert */
+.shopping-alert {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  border-left: 4px solid var(--color-success);
+}
+
+.shopping-alert h4 {
+  color: var(--color-success);
+  margin-bottom: 0.75rem;
+}
+
+.shopping-alert ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.shopping-alert li {
+  background: none;
+  padding: 0.3rem 0;
+  margin: 0;
+  border: none;
+}
+
+/* Source References */
+.source-section {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.source-section h3 {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.source-section ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.source-section li {
+  background: none;
+  padding: 0.25rem 0;
+  margin: 0;
+  border: none;
+}
+
+/* Last Updated Footer */
+.last-updated {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  font-style: italic;
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-border);
+  margin-top: 2rem;
+}
+
